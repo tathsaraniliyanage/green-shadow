@@ -1,0 +1,3 @@
+function showCropAddFromOnClick() {
+    $('#cropAddForm').toggle();
+}
