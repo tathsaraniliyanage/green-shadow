@@ -4,6 +4,9 @@ function showStaffAddFromOnClick() {
 }
 
 async function staffSave() {
+  if (! await validateForm()) {
+    return;
+  }
   $("#staffAddForm").toggle();
   const formData = {};
 
@@ -184,4 +187,86 @@ function loadDataSaff(list) {
                   </tr>`
     );
   });
+}
+
+function validateForm() {
+  // Regex patterns
+  const patterns = {
+    id: /^S\d{3}$/, // S followed by 3 digits
+    firstName: /^[A-Za-z]{2,30}$/, // 2-30 letters
+    lastName: /^[A-Za-z]{2,30}$/, // 2-30 letters
+    designation: /^[A-Za-z\s]{2,50}$/, // 2-50 letters and spaces
+    contactNo: /^(?:\+94|0)[1-9][0-9]{8}$/, // Sri Lankan phone number format
+    email: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/ // Email format
+  };
+
+  // Error messages
+  const errorMessages = {
+    id: "Staff ID must start with 'S' followed by 3 digits (e.g., S001)",
+    firstName: "First name must be 2-30 letters only",
+    lastName: "Last name must be 2-30 letters only",
+    designation: "Designation must be 2-50 letters and spaces only",
+    contactNo: "Contact number must be in Sri Lankan format (e.g., +94771234567 or 0771234567)",
+    email: "Please enter a valid email address"
+  };
+
+  // Fields to validate with regex
+  const fieldsToValidate = [
+    { id: 'staff-id', pattern: patterns.id, message: errorMessages.id },
+    { id: 'staff-firstName', pattern: patterns.firstName, message: errorMessages.firstName },
+    { id: 'staff-lastName', pattern: patterns.lastName, message: errorMessages.lastName },
+    { id: 'staff-designation', pattern: patterns.designation, message: errorMessages.designation },
+    { id: 'staff-contact-no', pattern: patterns.contactNo, message: errorMessages.contactNo },
+    { id: 'staff-email', pattern: patterns.email, message: errorMessages.email }
+  ];
+
+  // Check all required fields are filled
+  const requiredFields = document.querySelectorAll('#staffAddForm input[required], #staffAddForm select[required]');
+  for (let field of requiredFields) {
+    if (!field.value.trim()) {
+      alert('Please fill out all required fields.');
+      field.focus();
+      return false;
+    }
+  }
+
+  // Validate fields with regex
+  for (let field of fieldsToValidate) {
+    const element = document.getElementById(field.id);
+    if (element && !field.pattern.test(element.value)) {
+      alert(field.message);
+      element.focus();
+      return false;
+    }
+  }
+
+  // Date validations
+  const joinedDate = new Date(document.getElementById('staff-joined-date').value);
+  const dob = new Date(document.getElementById('staff-dob').value);
+  const today = new Date();
+  const minAge = 18;
+  const maxAge = 60;
+
+  // Validate DOB
+  const age = today.getFullYear() - dob.getFullYear();
+  if (age < minAge || age > maxAge) {
+    alert(`Age must be between ${minAge} and ${maxAge} years.`);
+    document.getElementById('staff-dob').focus();
+    return false;
+  }
+
+  // Validate Joined Date
+  if (joinedDate > today) {
+    alert("Joined date cannot be in the future.");
+    document.getElementById('staff-joined-date').focus();
+    return false;
+  }
+
+  if (joinedDate < dob) {
+    alert("Joined date cannot be before date of birth.");
+    document.getElementById('staff-joined-date').focus();
+    return false;
+  }
+
+  return true;
 }

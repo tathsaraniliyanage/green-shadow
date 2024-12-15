@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- <script src="./service/AuthService.js"></script> -->
+    <title>Register - Green Shadow</title>
+  </head>
+  <body>
+    <section class="bg-gray-50">
+      <img class="h-full w-full absolute opacity-50" src="./acessst/image/leff.jpg" alt="" />
+      <h1 class="text-white font-bold text-[200px] absolute z-[5] font-poppins flex items-center justify-center text-center">
+        GREEN SHADOW
+      </h1>
+      <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 relative z-10">
+        <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+          <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+              Create your account
+            </h1>
+            <form id="registrationForm" class="space-y-4 md:space-y-6" onsubmit="return validateForm(event)">
+              <div>
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
+                  Your email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  placeholder="name@company.com"
+                  required
+                />
+                <span id="emailError" class="text-red-500 text-sm hidden">Please enter a valid email address</span>
+              </div>
+              <div>
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900">
+                  Password
+                  <span class="text-xs text-gray-500 block">
+                    Must contain: 8+ characters, uppercase, lowercase, number, special character (@$!%*?&)
+                  </span>
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="••••••••"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  required
+                  oninput="validatePasswordStrength(this.value)"
+                />
+                <div id="passwordStrength" class="mt-2 text-sm">
+                  <div id="length" class="text-red-500">✗ 8+ characters</div>
+                  <div id="uppercase" class="text-red-500">✗ Uppercase letter</div>
+                  <div id="lowercase" class="text-red-500">✗ Lowercase letter</div>
+                  <div id="number" class="text-red-500">✗ Number</div>
+                  <div id="special" class="text-red-500">✗ Special character (@$!%*?&)</div>
+                </div>
+              </div>
+              <div>
+                <label for="confirmPassword" class="block mb-2 text-sm font-medium text-gray-900">
+                  Confirm Password
+                </label>
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  id="confirmPassword"
+                  placeholder="••••••••"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  required
+                  oninput="validatePasswordMatch()"
+                />
+                <span id="confirmPasswordError" class="text-red-500 text-sm hidden">Passwords do not match</span>
+              </div>
+              <div class="sm:col-span-3 flex-grow-[1]">
+                <label for="role" class="block text-sm/6 font-medium text-gray-900">Role</label>
+                <div class="mt-2 w-full">
+                  <select
+                    name="role"
+                    id="staff-role"
+                    required
+                    class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  >
+                    <option value="">Select a role</option>
+                    <option value="USER">USER</option>
+                    <option value="MANAGER">MANAGER</option>
+                    <option value="ADMINISTRATIVE">ADMINISTRATIVE</option>
+                    <option value="SCIENTIST">SCIENTIST</option>
+                  </select>
+                  <span id="roleError" class="text-red-500 text-sm hidden">Please select a role</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-start">
+                  <div class="flex items-center h-5">
+                    <input
+                      id="terms"
+                      type="checkbox"
+                      class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"
+                      required
+                    />
+                  </div>
+                  <div class="ml-3 text-sm">
+                    <label for="terms" class="text-gray-500">
+                      I agree to the Terms and Conditions
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="w-full text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              >
+                Sign Up
+              </button>
+              <p class="text-sm font-light text-gray-500">
+                Already have an account?
+                <a href="login.html" class="font-medium text-primary-600 hover:underline">Sign in</a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function validatePasswordStrength(password) {
+        // Check each requirement
+        const requirements = {
+          length: password.length >= 8,
+          uppercase: /[A-Z]/.test(password),
+          lowercase: /[a-z]/.test(password),
+          number: /[0-9]/.test(password),
+          special: /[@$!%*?&]/.test(password)
+        };
+
+        // Update visual feedback for each requirement
+        Object.keys(requirements).forEach(req => {
+          const element = document.getElementById(req);
+          if (requirements[req]) {
+            element.classList.remove('text-red-500');
+            element.classList.add('text-green-500');
+            element.textContent = '✓ ' + element.textContent.substring(2);
+          } else {
+            element.classList.remove('text-green-500');
+            element.classList.add('text-red-500');
+            element.textContent = '✗ ' + element.textContent.substring(2);
+          }
+        });
+
+        // Return true if all requirements are met
+        return Object.values(requirements).every(Boolean);
+      }
+
+      function validatePasswordMatch() {
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const errorElement = document.getElementById('confirmPasswordError');
+        
+        if (password === confirmPassword) {
+          errorElement.classList.add('hidden');
+          return true;
+        } else {
+          errorElement.classList.remove('hidden');
+          return false;
+        }
+      }
+
+      function validateForm(event) {
+        event.preventDefault();
+        let isValid = true;
+
+        // Email validation
+        const email = document.getElementById('email');
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        if (!emailRegex.test(email.value)) {
+          document.getElementById('emailError').classList.remove('hidden');
+          isValid = false;
+        } else {
+          document.getElementById('emailError').classList.add('hidden');
+        }
+
+        // Password validation
+        const password = document.getElementById('password').value;
+        isValid = validatePasswordStrength(password) && isValid;
+
+        // Confirm password validation
+        isValid = validatePasswordMatch() && isValid;
+
+        // Role validation
+        const role = document.getElementById('staff-role');
+        if (!role.value) {
+          document.getElementById('roleError').classList.remove('hidden');
+          isValid = false;
+        } else {
+          document.getElementById('roleError').classList.add('hidden');
+        }
+
+        // If all validations pass, submit the form
+        if (isValid) {
+          const formData = {
+            email: email.value,
+            password: password,
+            role: role.value
+          };
+          register(formData);
+        }
+
+        return false;
+      }
+
+      async function register(formData) {
+        try {
+          const response = await $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/auth/signup",
+            data: JSON.stringify(formData),
+            contentType: "application/json"
+          });
+
+          if (response) {
+            alert("Registration successful! Please login.");
+            window.location.href = "login.html";
+          } else {
+            alert("Registration failed: " + response.message);
+          }
+        } catch (error) {
+          console.error("Error during registration:", error);
+          alert("Registration failed. Please try again.");
+        }
+      }
+    </script>
+  </body>
+</html>

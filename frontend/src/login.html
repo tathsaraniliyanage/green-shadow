@@ -8,8 +8,10 @@
   </head>
   <body>
     <section class="bg-gray-50 ">
+      <img class="h-full w-full absolute opacity-50" src="./acessst/image/leff.jpg" alt="">
+      <h1 class="text-white font-bold text-[200px] absolute z-[5] font-poppins flex items-center justify-center text-center">GREEN SHADOW</h1>
       <div
-        class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
+        class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 relative z-10 "
       >
         <div
           class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0 "
@@ -86,7 +88,7 @@
               <p class="text-sm font-light text-gray-500 ">
                 Don’t have an account yet?
                 <a
-                  href="#"
+                  href="reg.html"
                   class="font-medium text-primary-600 hover:underline "
                   >Sign up</a
                 >
@@ -108,6 +110,8 @@
         password: password,
       };
 
+      localStorage.setItem("user", email);
+
       try {
         const response = await fetch("http://localhost:8080/auth/login", {
           method: "POST",
@@ -124,6 +128,8 @@
           localStorage.setItem("token", result.token);
           localStorage.setItem("expiresIn", result.expiresIn);
 
+          
+
           alert("Login successful!");
           window.location.href = "index.html";
         } else {
@@ -136,4 +142,5 @@
       }
     }
   </script>
+  
 </html>

@@ -1,11 +1,6 @@
 function saveStaff(dto) {
   const jwtToken = localStorage.getItem("token");
 
-  console.log(jwtToken);
-
-  console.log(dto);
-  console.log(JSON.stringify(dto));
-
   return new Promise((resolve, reject) => {
     $.ajax({
       type: "POST",
@@ -103,7 +98,6 @@ function findStaffById(id) {
 }
 
 deleteStaff = (id) => {
-
   const jwtToken = localStorage.getItem("token");
 
   return new Promise((resolve, reject) => {
@@ -120,6 +114,28 @@ deleteStaff = (id) => {
       error: function (errormsg) {
         console.error("Error deleting staff:", errormsg);
         resolve(false);
+      },
+    });
+  });
+};
+
+getAllStaffMember = () => {
+  const jwtToken = localStorage.getItem("token");
+
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      type: "GET",
+      url: "http://localhost:8080/staff",
+      beforeSend: function (xhr) {
+        xhr.setRequestHeader("Authorization", `Bearer ${jwtToken}`);
+      },
+      success: function (data) {
+        console.log("Staff fetch successfully:", data.message);
+        resolve(data.data);
+      },
+      error: function (errormsg) {
+        console.error("Error fetch staff:", errormsg);
+        reject(errormsg);
       },
     });
   });
