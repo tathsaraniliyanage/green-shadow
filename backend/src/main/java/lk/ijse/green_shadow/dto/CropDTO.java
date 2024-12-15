@@ -1,9 +1,7 @@
 package lk.ijse.green_shadow.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
 
@@ -16,8 +14,9 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @ToString
-public class CropDTO implements Serializable {
+public class CropDTO {
     private String cropCode;
     private String cropCommonName;
     private String cropScientificName;
@@ -26,5 +25,11 @@ public class CropDTO implements Serializable {
     private String cropSeason;
     private FieldDTO field;
 
-
+//    cropCode: dff
+//    cropCommonName: fdf
+//    cropScientificName: fdf
+//    cropImage: (binary)
+//    category: df
+//    crop-season: fdf
+//    equipment-staff-id: F001
 }

@@ -1,9 +1,6 @@
 package lk.ijse.green_shadow.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.List;
@@ -17,6 +14,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @ToString
 
 public class FieldDTO implements Serializable {
