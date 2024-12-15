@@ -31,13 +31,13 @@ public class MonitoringLog implements Serializable {
     @Lob
     private String observedImage;
 
-    @OneToMany
+    @ManyToMany
     private List<Field> fields;
 
-    @OneToMany
+    @ManyToMany
     private List<Crop> crops;
 
-    @OneToMany
+    @ManyToMany
     private List<Staff> staff;
 
 }

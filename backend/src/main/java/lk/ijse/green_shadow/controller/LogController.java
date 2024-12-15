@@ -1,12 +1,25 @@
 package lk.ijse.green_shadow.controller;
 
+import lk.ijse.green_shadow.dto.CropDTO;
+import lk.ijse.green_shadow.dto.FieldDTO;
+import lk.ijse.green_shadow.dto.MonitoringLogDTO;
+import lk.ijse.green_shadow.dto.StaffDTO;
 import lk.ijse.green_shadow.entity.MonitoringLog;
+import lk.ijse.green_shadow.service.ImageService;
 import lk.ijse.green_shadow.service.impl.LogServiceImpl;
 import lk.ijse.green_shadow.util.ResponseUtil;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,19 +30,73 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/monitoringLog")
+@CrossOrigin
 public class LogController {
 
+
     private final LogServiceImpl logService;
+
+    @Autowired
+    private ModelMapper modelMapper;
+
+    @Autowired
+    private ImageService imageService;
 
     @Autowired
     public LogController(LogServiceImpl logService) {
         this.logService = logService;
     }
 
-    @PostMapping
-    public ResponseEntity<ResponseUtil> saveLog(@RequestBody MonitoringLog monitoringLog) {
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<ResponseUtil> saveLog(
+            @RequestParam("logCode") String logCode,
+           @RequestParam("logDate") String logDate,
+           @RequestParam("logDetails") String logDetails,
+           @RequestParam("observedImage") MultipartFile observedImage
+
+
+    ) {
         try {
-            MonitoringLog savedLog = logService.saveLog(monitoringLog);
+            String uploadDirectory = "src/main/resources/static/images/cropLog";
+            String savedImage = imageService.saveImageToStorage(uploadDirectory, observedImage, logCode);
+
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            // Convert string to Date
+            Date date = formatter.parse(logDate);
+
+            MonitoringLogDTO build = MonitoringLogDTO.builder().
+                    logCode(logCode).
+                    logDate(logDate).
+                    logDetails(logDetails).
+                    observedImage(savedImage)
+                    .build();
+
+            MonitoringLog savedLog = logService.saveLog(modelMapper.map(build,MonitoringLog.class));
+
+            return ResponseEntity.status(201).body(
+                    ResponseUtil.builder()
+                            .code(201)
+                            .data(savedLog)
+                            .message("Monitoring log saved successfully.")
+                            .build()
+            );
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                    ResponseUtil.builder()
+                            .code(500)
+                            .message("Failed to save monitoring log: " + e.getMessage())
+                            .build()
+            );
+        }
+    }
+
+    @PostMapping(path = "/list",consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ResponseUtil> saveLogList(@RequestBody MonitoringLogDTO dto) {
+        try {
+            MonitoringLog logById = logService.getLogById(dto.getLogCode());
+            dto.setObservedImage(logById.getObservedImage());
+            MonitoringLog savedLog = logService.updateLog(dto.getLogCode(),modelMapper.map(dto,MonitoringLog.class));
+
             return ResponseEntity.status(201).body(
                     ResponseUtil.builder()
                             .code(201)
@@ -69,9 +136,17 @@ public class LogController {
     }
 
     @GetMapping
+    @Secured("ADMINISTRATIVE")
     public ResponseEntity<ResponseUtil> getAllLogs() {
         try {
             List<MonitoringLog> monitoringLogs = logService.getAllLogs();
+
+            List<MonitoringLog> newList=new ArrayList<>();
+            String uploadDirectory = "src/main/resources/static/images/cropLog";
+            for (MonitoringLog log:monitoringLogs){
+                log.setObservedImage("data:image/jpeg;base64,"+imageService.getImageAsBase64(uploadDirectory,log.getObservedImage()));
+                newList.add(log);
+            }
             return ResponseEntity.ok(
                     ResponseUtil.builder()
                             .code(200)

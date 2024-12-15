@@ -1,9 +1,7 @@
 package lk.ijse.green_shadow.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,10 +17,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 
 public class MonitoringLogDTO implements Serializable {
     private String logCode;
-    private Date logDate;
+
+    private String logDate;
     private String logDetails;
     private String observedImage;
     private List<FieldDTO> fields;

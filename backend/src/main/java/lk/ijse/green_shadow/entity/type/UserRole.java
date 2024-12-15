@@ -7,5 +7,5 @@ package lk.ijse.green_shadow.entity.type;
  */
 
 public enum UserRole {
-    MANAGER, ADMINISTRATIVE
+    MANAGER, ADMINISTRATIVE ,USER, SCIENTIST
 }

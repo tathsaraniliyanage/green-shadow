@@ -19,6 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/equipment")
 @RequiredArgsConstructor
+@CrossOrigin
 public class EquipmentController {
 
     private final EquipmentServiceImpl equipmentService;

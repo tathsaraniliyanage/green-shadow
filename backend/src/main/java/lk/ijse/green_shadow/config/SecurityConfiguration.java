@@ -31,26 +31,26 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http.csrf()
-//                .disable()
-//                .authorizeHttpRequests()
-//                .requestMatchers("/auth/**")
-//                .permitAll()
-//                .anyRequest()
-//                .authenticated()
-//                .and()
-//                .sessionManagement()
-//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                .and()
-//                .authenticationProvider(authenticationProvider)
-//                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        http.csrf()
+                .disable().cors().and()
+                .authorizeHttpRequests()
+                .requestMatchers("/auth/**")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authenticationProvider(authenticationProvider)
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
-        http
-                .csrf().disable()
-                .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/**").permitAll() // allow CORS option calls for Swagger
-                        .anyRequest().authenticated())
-                .httpBasic();
+//        http
+//                .csrf().disable()
+//                .authorizeHttpRequests((requests) -> requests
+//                        .requestMatchers("/auth/**").permitAll()// allow CORS option calls for Swagger
+//                        .anyRequest().authenticated())
+//                .httpBasic();
         return http.build();
 
 //        return http.build();

@@ -1,13 +1,20 @@
 package lk.ijse.green_shadow.controller;
 
+import lk.ijse.green_shadow.dto.CropDTO;
+import lk.ijse.green_shadow.dto.FieldDTO;
 import lk.ijse.green_shadow.entity.Crop;
 import lk.ijse.green_shadow.service.CropService;
+import lk.ijse.green_shadow.service.ImageService;
 import lk.ijse.green_shadow.util.ResponseUtil;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,14 +26,44 @@ import java.util.List;
 @RestController
 @RequestMapping("/crops")
 @RequiredArgsConstructor
+@CrossOrigin
 public class CropController {
 
+    @Autowired
     private final CropService cropService;
 
-    @PostMapping
-    public ResponseEntity<ResponseUtil> saveCrop(@RequestBody Crop crop) {
+    @Autowired
+    private ModelMapper modelMapper;
+
+    @Autowired
+    private ImageService imageService;
+
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<ResponseUtil> saveCrop(
+            @RequestParam("cropCode") String cropCode,
+            @RequestParam("cropCommonName") String cropCommonName,
+            @RequestParam("cropScientificName") String cropScientificName,
+            @RequestPart("cropImage") MultipartFile cropImage,
+            @RequestParam("category") String category,
+            @RequestParam("crop-season") String cropSeason,
+            @RequestParam("equipment-staff-id") String equipmentStaffId
+    ) {
         try {
-            Crop savedCrop = cropService.saveCrop(crop);
+            String uploadDirectory = "src/main/resources/static/images";
+            String savedImage = imageService.saveImageToStorage(uploadDirectory, cropImage, cropCode);
+
+            CropDTO cropDTO = CropDTO.builder().
+                    cropCode(cropCode).
+                    cropCommonName(cropCommonName).
+                    cropScientificName(cropScientificName).
+                    cropImage(savedImage).
+                    category(category).
+                    cropSeason(cropSeason).
+                    field(FieldDTO.builder().fieldCode(equipmentStaffId).build()).build();
+
+            Crop savedCrop = cropService.saveCrop(modelMapper.map(cropDTO, Crop.class));
+
+
             return ResponseEntity.status(201).body(
                     ResponseUtil.builder()
                             .code(201)
@@ -34,6 +71,7 @@ public class CropController {
                             .message("Crop saved successfully.")
                             .build()
             );
+
         } catch (Exception e) {
             return ResponseEntity.status(500).body(
                     ResponseUtil.builder()
@@ -44,10 +82,44 @@ public class CropController {
         }
     }
 
-    @PutMapping("/{cropCode}")
-    public ResponseEntity<ResponseUtil> updateCrop(@PathVariable String cropCode, @RequestBody Crop crop) {
+    @PutMapping
+    public ResponseEntity<ResponseUtil> updateCrop(
+            @RequestParam("cropCode") String cropCode,
+            @RequestParam("cropCommonName") String cropCommonName,
+            @RequestParam("cropScientificName") String cropScientificName,
+            @RequestPart("cropImage") MultipartFile cropImage,
+            @RequestParam("category") String category,
+            @RequestParam("crop-season") String cropSeason
+    ) {
         try {
-            Crop updatedCrop = cropService.updateCrop(cropCode, crop);
+            Crop crop = cropService.getCrop(cropCode);
+            CropDTO cropDTO;
+            if (cropImage.isEmpty()) {
+                cropDTO = CropDTO.builder().
+                        cropCode(cropCode).
+                        cropCommonName(cropCommonName).
+                        cropScientificName(cropScientificName).
+                        category(category).
+                        cropSeason(cropSeason).
+                        cropImage(crop.getCropImage()).
+                        field(FieldDTO.builder().fieldCode(crop.getField().getFieldCode()).build()).build();
+
+            } else {
+                String uploadDirectory = "src/main/resources/static/images";
+                String savedImage = imageService.saveImageToStorage(uploadDirectory, cropImage, cropCode);
+
+                cropDTO = CropDTO.builder().
+                        cropCode(cropCode).
+                        cropCommonName(cropCommonName).
+                        cropScientificName(cropScientificName).
+                        cropImage(savedImage).
+                        category(category).
+                        cropSeason(cropSeason).
+                        field(FieldDTO.builder().fieldCode(crop.getField().getFieldCode()).build()).build();
+            }
+
+            Crop updatedCrop = cropService.updateCrop(cropCode, modelMapper.map(cropDTO, Crop.class));
+
             return ResponseEntity.ok(
                     ResponseUtil.builder()
                             .code(200)
@@ -69,10 +141,18 @@ public class CropController {
     public ResponseEntity<ResponseUtil> getAllCrops() {
         try {
             List<Crop> crops = cropService.getAllCrops();
+            List<Crop> newList = new ArrayList<>();
+
+
+            for (Crop crop : crops) {
+                crop.setCropImage("data:image/jpeg;base64," + imageService.getImageAsBase64("src/main/resources/static/images/", crop.getCropImage()));
+                newList.add(crop);
+            }
+
             return ResponseEntity.ok(
                     ResponseUtil.builder()
                             .code(200)
-                            .data(crops)
+                            .data(newList)
                             .message("Crops retrieved successfully.")
                             .build()
             );
@@ -90,6 +170,8 @@ public class CropController {
     public ResponseEntity<ResponseUtil> getCropByCode(@PathVariable String cropCode) {
         try {
             Crop crop = cropService.getCrop(cropCode);
+
+            crop.setCropImage("data:image/jpeg;base64," + imageService.getImageAsBase64("src/main/resources/static/images/", crop.getCropImage()));
             return ResponseEntity.ok(
                     ResponseUtil.builder()
                             .code(200)
