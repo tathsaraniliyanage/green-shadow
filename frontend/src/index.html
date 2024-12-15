@@ -1,0 +1,3163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+
+    <style>
+      /* width */
+      ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+        border-radius: 10px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: #ffffff;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #8dffd0;
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #00aa8e;
+      }
+    </style>
+  </head>
+  <body>
+    <section
+      class="flex flex-col w-dvw h-dvh min-h-fit min-w-fit bg-slate-100 relative"
+    >
+      <section
+        class="h-[70px] bg-white flex flex-row justify-between items-center shadow-sm z-10 p-4"
+      >
+        <span class="text-[#0E836B] text-lg font-bold">Green Shadow</span>
+        <div class="flex flex-row gap-5 justify-center items-center">
+          <img class="h-[24px]" src="/src/acessst/image/Group 88.png" alt="" />
+          <img class="h-[44px]" src="/src/acessst/image/Ellipse 1.png" alt="" />
+          <span id="user2" class="text-gray-600 text-lg">Shambhavi Mishra</span>
+        </div>
+      </section>
+
+      <section
+        class="flex flex-wrap lg:flex-row flex-grow-[1] md:flex-col sm:flex-col"
+      >
+        <div
+          class="flex lg:flex-col lg:h-full lg:w-[20%] md:w-full md:flex-row md:h-fit max-sm:h-fit bg-white"
+          id="buttonSet"
+        >
+          <button
+            type="button"
+            onclick="dashboardHomeOnclick(event)"
+            class="font-semibold border-l-[4px] p-4 border-white h-[44px] flex flex-row gap-2 justify-start items-center text-[#0E836B] hover:bg-gradient-to-r from-[#0e836c1b] hover:border-[#0E836B]"
+          >
+            <img src="/src/acessst/image/home.png" class="h-[18px]" alt="" />
+            Home
+          </button>
+
+          <button
+            type="button"
+            onclick="dashboardFieldOnclick(event)"
+            class="font-semibold border-l-[4px] p-4 border-white h-[44px] flex flex-row gap-2 justify-start items-center text-[#0E836B] hover:bg-gradient-to-r from-[#0e836c1b] hover:border-[#0E836B]"
+          >
+            <img
+              src="/src/acessst/image/icon/icons8-field-64.png"
+              class="h-[18px]"
+              alt=""
+            />
+            Field
+          </button>
+
+          <button
+            type="button"
+            onclick="dashboardCropOnclick(event)"
+            class="font-semibold border-l-[4px] p-4 border-white h-[44px] flex flex-row gap-2 justify-start items-center text-[#0E836B] hover:bg-gradient-to-r from-[#0e836c1b] hover:border-[#0E836B]"
+          >
+            <img
+              src="/src/acessst/image/icon/icons8-plant-48.png"
+              class="h-[18px]"
+              alt=""
+            />
+            Crops
+          </button>
+
+          <button
+            type="button"
+            onclick="dashboardStaffOnclick(event)"
+            class="font-semibold border-l-[4px] p-4 border-white h-[44px] flex flex-row gap-2 justify-start items-center text-[#0E836B] hover:bg-gradient-to-r from-[#0e836c1b] hover:border-[#0E836B]"
+          >
+            <img
+              src="/src/acessst/image/icon/icons8-staff-50.png"
+              class="h-[18px]"
+              alt=""
+            />
+            staff
+          </button>
+
+          <button
+            type="button"
+            onclick="dashboardVehicleOnclick(event)"
+            class="font-semibold border-l-[4px] p-4 border-white h-[44px] flex flex-row gap-2 justify-start items-center text-[#0E836B] hover:bg-gradient-to-r from-[#0e836c1b] hover:border-[#0E836B]"
+          >
+            <img
+              src="/src/acessst/image/icon/icons8-car-64.png"
+              class="h-[18px]"
+              alt=""
+            />
+            Vehicle
+          </button>
+
+          <button
+            type="button"
+            onclick="dashboardEquipmentOnclick(event)"
+            class="font-semibold border-l-[4px] p-4 border-white h-[44px] flex flex-row gap-2 justify-start items-center text-[#0E836B] hover:bg-gradient-to-r from-[#0e836c1b] hover:border-[#0E836B]"
+          >
+            <img
+              src="/src/acessst/image/icon/icons8-tool-64.png"
+              class="h-[18px]"
+              alt=""
+            />
+            Equipment
+          </button>
+
+          <button
+            type="button"
+            onclick="dashboardMonitoringLogOnclick(event)"
+            class="font-semibold border-l-[4px] p-4 border-white h-[44px] flex flex-row gap-2 justify-start items-center text-[#0E836B] hover:bg-gradient-to-r from-[#0e836c1b] hover:border-[#0E836B]"
+          >
+            <img
+              src="/src/acessst/image/icon/icons8-log-48.png"
+              class="h-[18px]"
+              alt=""
+            />
+            Monitoring Log
+          </button>
+        </div>
+
+        <div class="grow-[1]">
+          <section class="w-full flex justify-end absolute bottom-0 right-0">
+            <img
+              src="./acessst/image/image-removebg-preview (13).png"
+              class="h-[200px]"
+              alt=""
+            />
+          </section>
+
+          <!-- Home Section -->
+          <section
+            id="dashbord"
+            style="display: block"
+            class="p-6 flex gap-4 flex-col"
+          >
+            <div class="flex flex-col justify-between items-center">
+              <div>
+                <h1 class="text-3xl font-bold mb-10">Hello, Have a nice day</h1>
+
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                  <div class="col-span-2">
+                    <div
+                      class="p-4 bg-green-100 rounded-xl flex row justify-between"
+                    >
+                      <div class="font-bold text-xl text-gray-800 leading-none">
+                        Good day, <br />
+                        <span id="user1"></span>
+                      </div>
+                      <div>
+                        <h1 id="date" class="text-3xl font-bold mb-3"></h1>
+                        <h1 id="time" class="text-3xl font-bold mb-10"></h1>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="p-4 bg-yellow-100 rounded-xl text-gray-800">
+                    <div class="font-bold text-2xl leading-none">20</div>
+                    <div class="mt-2">Available for next Season Crops</div>
+                  </div>
+                  <div class="p-4 bg-yellow-100 rounded-xl text-gray-800">
+                    <div class="font-bold text-2xl leading-none">60</div>
+                    <div class="mt-2">Available equipment</div>
+                  </div>
+                  <div class="col-span-2">
+                    <div class="p-4 bg-purple-100 rounded-xl text-gray-800">
+                      <div class="font-bold text-xl leading-none">
+                        Our Landing 
+                      </div>
+                      <div class="mt-2">we have a 8 lands</div>
+                    </div>
+                  </div>
+                </div>
+
+                <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+                  <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                    <div
+                      class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 rounded-full mr-6"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        class="h-6 w-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <span class="block text-2xl font-bold" id="staffCount">62</span>
+                      <span class="block text-gray-500">All Staff</span>
+                    </div>
+                  </div>
+                  <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                    <div
+                      class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-600 bg-green-100 rounded-full mr-6"
+                    >
+                      <img src="./acessst/image/icon/icons8-plant-24.png" alt="">
+                    </div>
+                    <div>
+                      <span class="block text-2xl font-bold" id="cropCount">6.8</span>
+                      <span class="block text-gray-500">Ouer All Crops</span>
+                    </div>
+                  </div>
+                  <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                    <div
+                      class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-red-600 bg-red-100 rounded-full mr-6"
+                    >
+                    <img class="h-8 w-8" src="./acessst/image/icon/icons8-vehicle-insurance-48.png" alt="">
+                    </div>
+                    <div>
+                      <span class="inline-block text-2xl font-bold" id="vehicleCountUnAvalable">9</span>
+                      <span class="block text-gray-500"
+                        >Unavailable vehicles </span
+                      >
+                    </div>
+                  </div>
+                  <div class="flex items-center p-8 bg-white shadow rounded-lg">
+                    <div
+                      class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-blue-600 bg-blue-100 rounded-full mr-6"
+                    >
+                    <img class="h-8 w-8" src="./acessst/image/icon/icons8-car-50.png" alt="">
+                    </div>
+                    <div>
+                      <span class="inline-block text-2xl font-bold" id="vehicleCountAvalable">9</span>
+                      <span class="block text-gray-500"
+                        >Available vehicles </span
+                      >
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </section>
+
+          <!-- Field Section -->
+          <section
+            id="mainFieldSection"
+            style="display: none"
+            class="p-6 flex gap-4 flex-col"
+          >
+            <!-- search bar and close button section  -->
+            <div class="flex flex-row justify-between items-center">
+              <!-- search bar -->
+              <div class="w-full max-w-sm min-w-[200px]">
+                <div class="relative flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="absolute w-5 h-5 top-2.5 left-2.5 text-slate-600"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+
+                  <input
+                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                    placeholder="Search Field..."
+                  />
+
+                  <button
+                    class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+                    type="button"
+                  >
+                    Search
+                  </button>
+                </div>
+              </div>
+              <!-- close button -->
+              <button
+                type="button"
+                onclick="showFieldAddFromOnClick()"
+                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+              >
+                <img
+                  src="./acessst/image/icon/icons8-add-30.png"
+                  class="fill-current w-4 h-4 mr-2"
+                  alt=""
+                />
+                <span>Field</span>
+              </button>
+            </div>
+            <!-- table -->
+            <div
+              class="relative flex flex-col w-full h-full overflow-auto text-gray-700 bg-white shadow-md rounded-xl bg-clip-border p-3 mt-6"
+            >
+              <table class="w-full text-left table-auto min-w-max">
+                <thead>
+                  <tr>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        @1
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        @2
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        fields Name
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Location
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Extent size
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    ></th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    ></th>
+                  </tr>
+                </thead>
+                <tbody id="fieldTbody"></tbody>
+              </table>
+            </div>
+
+            <!-- from section -->
+            <form
+              id="fieldForm"
+              onsubmit="submitFieldForm(event)"
+              enctype="multipart/form-data"
+            >
+              <div
+                id="fieldAddForm"
+                style="display: none"
+                class="fixed top-0 bottom-0 left-0 right-[100px] m-auto z-10 bg-[#fdffff] rounded-lg shadow-lg flex flex-col gap-4 w-[50%] h-[80%] p-3 overflow-auto"
+              >
+                <!-- name tag and close button -->
+                <div class="flex flex-row items-center justify-between">
+                  <!-- name tag -->
+                  <label class="font-semibold text-lg text-green-600"
+                    >Field
+                  </label>
+                  <!-- close button -->
+                  <button
+                    type="button"
+                    class="w-5"
+                    onclick="showFieldAddFromOnClick()"
+                  >
+                    <img src="./acessst/image/icon/icons8-close.svg" alt="" />
+                  </button>
+                </div>
+
+                <!-- field code and name -->
+                <div class="flex flex-row gap-3">
+                  <!-- field code  -->
+                  <div class="sm:col-span-3 flex-grow-[1]">
+                    <label
+                      for="ffieldCode"
+                      class="block text-sm/6 font-medium text-gray-900"
+                      >Field Code</label
+                    >
+                    <div class="mt-2">
+                      <input
+                        type="text"
+                        name="fieldCode"
+                        id="fieldCode"
+                        autocomplete="given-name"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                      />
+                    </div>
+                  </div>
+                  <!-- filed name -->
+                  <div class="sm:col-span-3 flex-grow-[1]">
+                    <label
+                      for="field-name"
+                      class="block text-sm/6 font-medium text-gray-900"
+                      >Field Name</label
+                    >
+                    <div class="mt-2">
+                      <input
+                        type="text"
+                        name="fieldName"
+                        id="fieldName"
+                        autocomplete="given-name"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <!-- field location -->
+                <div class="col-span-full">
+                  <label
+                    for="fieldLocation"
+                    class="block text-sm/6 font-medium text-gray-900"
+                    >Field Location</label
+                  >
+                  <div class="mt-2">
+                    <textarea
+                      id="fieldLocation"
+                      name="fieldLocation"
+                      rows="3"
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                    ></textarea>
+                  </div>
+                </div>
+                <!-- extended size -->
+                <div class="sm:col-span-3 flex-grow-[1]">
+                  <label
+                    for="extentSize"
+                    class="block text-sm/6 font-medium text-gray-900"
+                    >Extended size</label
+                  >
+                  <div class="mt-2 w-[50%]">
+                    <input
+                      type="text"
+                      name="extentSize"
+                      id="extentSize"
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                    />
+                  </div>
+                </div>
+                <!-- image section -->
+                <div class="flex flex-row gap-6">
+                  <div class="flex flex-row gap-6">
+                    <div class="col-span-full">
+                      <label
+                        for="fieldImage1"
+                        class="block text-sm/6 font-medium text-gray-900"
+                        >Cover photo</label
+                      >
+                      <div
+                        class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
+                      >
+                        <div class="text-center">
+                          <img
+                            id="field-img1-previewImage"
+                            class="mx-auto"
+                            style="height: 200px"
+                            src="/src/acessst/image/icon/9812024.png"
+                            alt="Preview"
+                          />
+                          <div class="mt-4 flex text-sm/6 text-gray-600">
+                            <label
+                              for="fieldImage1"
+                              class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                            >
+                              <span>Upload a file</span>
+                              <input
+                                id="fieldImage1"
+                                name="fieldImage1"
+                                type="file"
+                                class="sr-only"
+                                accept="image/png, image/jpeg, image/gif"
+                                onchange="feildUpdateImage1Preview(event)"
+                              />
+                            </label>
+                            <p class="pl-1">or drag and drop</p>
+                          </div>
+                          <p class="text-xs/5 text-gray-600">
+                            PNG, JPG, GIF up to 10MB
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-row gap-6">
+                    <div class="col-span-full">
+                      <label
+                        for="fieldImage2"
+                        class="block text-sm/6 font-medium text-gray-900"
+                        >Cover photo</label
+                      >
+                      <div
+                        class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
+                      >
+                        <div class="text-center">
+                          <img
+                            id="field-img2-previewImage"
+                            class="mx-auto"
+                            style="height: 200px"
+                            src="/src/acessst/image/icon/9812024.png"
+                            alt="Preview"
+                          />
+                          <div class="mt-4 flex text-sm/6 text-gray-600">
+                            <label
+                              for="fieldImage2"
+                              class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                            >
+                              <span>Upload a file</span>
+                              <input
+                                id="fieldImage2"
+                                name="fieldImage2"
+                                type="file"
+                                class="sr-only"
+                                accept="image/png, image/jpeg, image/gif"
+                                onchange="feildUpdateImage2Preview(event)"
+                              />
+                            </label>
+                            <p class="pl-1">or drag and drop</p>
+                          </div>
+                          <p class="text-xs/5 text-gray-600">
+                            PNG, JPG, GIF up to 10MB
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- staff member section -->
+                <!-- <hr class="mt-5 mb-5" /> -->
+
+                <!-- <div class="flex gap-2 flex-col">
+                  <label class="font-semibold">Staff members </label>
+                  <div class="relative flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="absolute w-5 h-5 top-2.5 left-2.5 text-slate-600"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+
+                    <input
+                      class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                      placeholder="Search Field..."
+                    />
+
+                    <button
+                      class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+                      type="button"
+                    >
+                      Search
+                    </button>
+                  </div>
+                  <div
+                    class="relative flex flex-col w-full h-full overflow-auto text-gray-700 bg-white shadow-md rounded-xl bg-clip-border p-3"
+                  >
+                    <table class="w-full text-left table-auto min-w-max">
+                      <thead>
+                        <tr>
+                          <th
+                            class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                          >
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                            >
+                              Name
+                            </p>
+                          </th>
+                          <th
+                            class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                          >
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                            >
+                              Job
+                            </p>
+                          </th>
+                          <th
+                            class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                          >
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                            >
+                              Employed
+                            </p>
+                          </th>
+                          <th
+                            class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                          >
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                            ></p>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              John Michael
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              Manager
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              23/04/18
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <a
+                              href="#"
+                              class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900"
+                            >
+                              Edit
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              Alexa Liras
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              Developer
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              23/04/18
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <a
+                              href="#"
+                              class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900"
+                            >
+                              Edit
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              Laurent Perrier
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              Executive
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              19/09/17
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <a
+                              href="#"
+                              class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900"
+                            >
+                              Edit
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              Michael Levi
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              Developer
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              24/12/08
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <a
+                              href="#"
+                              class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900"
+                            >
+                              Edit
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="p-4">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              Richard Gran
+                            </p>
+                          </td>
+                          <td class="p-4">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              Manager
+                            </p>
+                          </td>
+                          <td class="p-4">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              04/10/21
+                            </p>
+                          </td>
+                          <td class="p-4">
+                            <a
+                              href="#"
+                              class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900"
+                            >
+                              Edit
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div> -->
+                <!-- crops section -->
+                <!-- <hr class="mt-5 mb-5" /> -->
+
+                <!-- <div class="flex gap-2 flex-col">
+                  <label class="font-semibold">Staff members </label>
+                  <div class="relative flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="absolute w-5 h-5 top-2.5 left-2.5 text-slate-600"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+
+                    <input
+                      class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                      placeholder="Search Field..."
+                    />
+
+                    <button
+                      class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+                      type="button"
+                    >
+                      Search
+                    </button>
+                  </div>
+                  <div
+                    class="relative flex flex-col w-full h-full overflow-auto text-gray-700 bg-white shadow-md rounded-xl bg-clip-border p-3"
+                  >
+                    <table class="w-full text-left table-auto min-w-max">
+                      <thead>
+                        <tr>
+                          <th
+                            class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                          >
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                            >
+                              Name
+                            </p>
+                          </th>
+                          <th
+                            class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                          >
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                            >
+                              Job
+                            </p>
+                          </th>
+                          <th
+                            class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                          >
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                            >
+                              Employed
+                            </p>
+                          </th>
+                          <th
+                            class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                          >
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                            ></p>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              John Michael
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              Manager
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              23/04/18
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <a
+                              href="#"
+                              class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900"
+                            >
+                              Edit
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              Alexa Liras
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              Developer
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              23/04/18
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <a
+                              href="#"
+                              class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900"
+                            >
+                              Edit
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              Laurent Perrier
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              Executive
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              19/09/17
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <a
+                              href="#"
+                              class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900"
+                            >
+                              Edit
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              Michael Levi
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              Developer
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              24/12/08
+                            </p>
+                          </td>
+                          <td class="p-4 border-b border-blue-gray-50">
+                            <a
+                              href="#"
+                              class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900"
+                            >
+                              Edit
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="p-4">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              Richard Gran
+                            </p>
+                          </td>
+                          <td class="p-4">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              Manager
+                            </p>
+                          </td>
+                          <td class="p-4">
+                            <p
+                              class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                            >
+                              04/10/21
+                            </p>
+                          </td>
+                          <td class="p-4">
+                            <a
+                              href="#"
+                              class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900"
+                            >
+                              Edit
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div> -->
+
+                <!-- close and save button -->
+                <div class="flex justify-end gap-4">
+                  <!-- close button -->
+                  <button
+                    onclick="fieldClose()"
+                    class="bg-gray-300 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded inline-flex items-center gap-4 w-fit"
+                  >
+                    <span>Close</span>
+                  </button>
+                  <!-- save button -->
+                  <button
+                    type="submit"
+                    onclick="fieldSave()"
+                    class="bg-green-500 hover:bg-green-500 text-white font-bold py-2 px-4 rounded inline-flex items-center gap-4 w-fit"
+                  >
+                    <span id="field-button-done-text">Done</span>
+                    <img
+                      src="./acessst/image/icon/icons8-done-64.png"
+                      class="fill-current w-5 h-4 mr-2"
+                      alt=""
+                    />
+                  </button>
+                </div>
+              </div>
+            </form>
+          </section>
+
+          <!-- Crop Section -->
+          <section
+            id="mainCropSection"
+            style="display: none"
+            class="p-6 flex gap-4 flex-col"
+          >
+            <!-- search bar and close button section  -->
+            <div class="flex flex-row justify-between items-center">
+              <!-- search bar -->
+              <div class="w-full max-w-sm min-w-[200px]">
+                <div class="relative flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="absolute w-5 h-5 top-2.5 left-2.5 text-slate-600"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+
+                  <input
+                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                    placeholder="Search Field..."
+                  />
+
+                  <button
+                    class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+                    type="button"
+                  >
+                    Search
+                  </button>
+                </div>
+              </div>
+              <!-- add button -->
+              <button
+                type="button"
+                onclick="showCropAddFromOnClick()"
+                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+              >
+                <img
+                  src="./acessst/image/icon/icons8-add-30.png"
+                  class="fill-current w-4 h-4 mr-2"
+                  alt=""
+                />
+                <span>Crop</span>
+              </button>
+            </div>
+
+            <!-- table -->
+            <div
+              class="relative flex flex-col w-full h-full overflow-auto text-gray-700 bg-white shadow-md rounded-xl bg-clip-border p-3 mt-6"
+            >
+              <table class="w-full text-left table-auto min-w-max">
+                <thead>
+                  <tr>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        @
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Crop Commen Name
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Crop Scientific Name
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Crop season
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Catagory
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      ></p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      ></p>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="cropTbody"></tbody>
+              </table>
+            </div>
+
+            <!-- from section -->
+            <form
+              id="cropForm"
+              onsubmit="submitCropForm(event)"
+              enctype="multipart/form-data"
+              style="height: 80%; overflow: auto"
+            >
+              crop
+              <div
+                id="cropAddForm"
+                style="display: none"
+                class="fixed top-0 bottom-0 left-0 right-[100px] m-auto z-10 bg-[#fdffff] rounded-lg shadow-lg flex flex-col gap-4 w-[50%] h-fit p-3 overflow-auto"
+              >
+                <!-- name tag and close button -->
+                <div class="flex flex-row items-center justify-between">
+                  <!-- name tag -->
+                  <label class="font-semibold text-lg text-green-600">
+                    Crop
+                  </label>
+                  <!-- close button -->
+                  <button
+                    type="button"
+                    class="w-5"
+                    onclick="showCropAddFromOnClick()"
+                  >
+                    <img src="./acessst/image/icon/icons8-close.svg" alt="" />
+                  </button>
+                </div>
+
+                <!-- crop code and name -->
+                <div class="flex flex-row gap-3">
+                  <!-- crop code  -->
+                  <div class="sm:col-span-3 flex-grow-[1]">
+                    <label
+                      for="cropCode"
+                      class="block text-sm/6 font-medium text-gray-900"
+                      >Crop Code</label
+                    >
+                    <div class="mt-2">
+                      <input
+                        type="text"
+                        name="cropCode"
+                        id="cropCode"
+                        autocomplete="given-name"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                      />
+                    </div>
+                  </div>
+                  <!-- crop common name -->
+                  <div class="sm:col-span-3 flex-grow-[1]">
+                    <label
+                      for="cropCommonName"
+                      class="block text-sm/6 font-medium text-gray-900"
+                      >Crop common name</label
+                    >
+                    <div class="mt-2">
+                      <input
+                        type="text"
+                        name="cropCommonName"
+                        id="cropCommonName"
+                        autocomplete="given-name"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Crop scientific name -->
+                <div class="col-span-full">
+                  <label
+                    for="cropScientificName"
+                    class="block text-sm/6 font-medium text-gray-900"
+                    >Crop scientific name
+                  </label>
+                  <div class="mt-2">
+                    <input id="cropScientificName" name="cropScientificName"
+                    rows="3" class="block rounded-md border-0 py-1.5
+                    text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300
+                    w-[50%] placeholder:text-gray-400 focus:ring-2
+                    focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" / >
+                  </div>
+                </div>
+
+                <!-- image section -->
+                <div class="flex flex-row gap-6">
+                  <div class="col-span-full">
+                    <label
+                      for="cover-photo"
+                      class="block text-sm/6 font-medium text-gray-900"
+                      >Cover photo</label
+                    >
+                    <div
+                      class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
+                    >
+                      <div class="text-center">
+                        <img
+                          id="crop-previewImage"
+                          class="mx-auto"
+                          style="height: 200px"
+                          src="/src/acessst/image/icon/9812024.png"
+                          alt="Preview"
+                        />
+                        <div class="mt-4 flex text-sm/6 text-gray-600">
+                          <label
+                            for="cropImage"
+                            class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                          >
+                            <span>Upload a file</span>
+                            <input
+                              id="cropImage"
+                              name="cropImage"
+                              type="file"
+                              class="sr-only"
+                              accept="image/png, image/jpeg, image/gif"
+                              onchange="cropUpdateImagePreview(event)"
+                            />
+                          </label>
+                          <p class="pl-1">or drag and drop</p>
+                        </div>
+                        <p class="text-xs/5 text-gray-600">
+                          PNG, JPG, GIF up to 10MB
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- category size -->
+                <div class="flex flex-row items-center justify-between gap-3">
+                  <div class="sm:col-span-3 flex-grow-[1]">
+                    <label
+                      for="category"
+                      class="block text-sm/6 font-medium text-gray-900"
+                      >Category</label
+                    >
+                    <div class="mt-2">
+                      <input
+                        type="text"
+                        name="category"
+                        id="category"
+                        autocomplete="given-name"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="sm:col-span-3 flex-grow-[1]">
+                    <label
+                      for="category"
+                      class="block text-sm/6 font-medium text-gray-900"
+                      >Crop season</label
+                    >
+                    <div class="mt-2">
+                      <input
+                        type="text"
+                        name="crop-season"
+                        id="crop-season"
+                        autocomplete="given-name"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="sm:col-span-3 flex-grow-[1]">
+                  <label
+                    for="staff-member"
+                    class="block text-sm/6 font-medium text-gray-900"
+                    >Field</label
+                  >
+                  <div class="mt-2 w-full">
+                    <select
+                      name="equipment-staff-id"
+                      id="crops-staff-id"
+                    ></select>
+                  </div>
+                </div>
+
+                <!-- close and save button -->
+                <div class="flex justify-end gap-4 mt-6 mb-6">
+                  <!-- close button -->
+                  <button
+                    type="button"
+                    onclick="showCropAddFromOnClick()"
+                    class="bg-gray-300 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded inline-flex items-center gap-4 w-fit"
+                  >
+                    <span>Close</span>
+                  </button>
+                  <!-- save button -->
+                  <button
+                    type="submit"
+                    class="bg-green-500 hover:bg-green-500 text-white font-bold py-2 px-4 rounded inline-flex items-center gap-4 w-fit"
+                  >
+                    <span id="crop-button-done-text">Done</span>
+                    <img
+                      src="./acessst/image/icon/icons8-done-64.png"
+                      class="fill-current w-5 h-4 mr-2"
+                      alt=""
+                    />
+                  </button>
+                </div>
+              </div>
+            </form>
+          </section>
+
+          <!-- vehicle Section -->
+          <section
+            id="mainVehicleSection"
+            style="display: none"
+            class="p-6 flex gap-4 flex-col"
+          >
+            <!-- search bar and close button section  -->
+            <div class="flex flex-row justify-between items-center">
+              <!-- search bar -->
+              <div class="w-full max-w-sm min-w-[200px]">
+                <div class="relative flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="absolute w-5 h-5 top-2.5 left-2.5 text-slate-600"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+
+                  <input
+                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                    placeholder="Search Field..."
+                  />
+
+                  <button
+                    class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+                    type="button"
+                  >
+                    Search
+                  </button>
+                </div>
+              </div>
+              <!-- add button -->
+              <button
+                type="button"
+                onclick="showVehicleAddFromOnClick()"
+                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+              >
+                <img
+                  src="./acessst/image/icon/icons8-add-30.png"
+                  class="fill-current w-4 h-4 mr-2"
+                  alt=""
+                />
+                <span>Vehicle</span>
+              </button>
+            </div>
+
+            <!-- table -->
+            <div
+              class="relative flex flex-col w-full h-full overflow-auto text-gray-700 bg-white shadow-md rounded-xl bg-clip-border p-3 mt-6"
+            >
+              <table class="w-full text-left table-auto min-w-max">
+                <thead>
+                  <tr>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        vehicleCode
+                      </p>
+                    </th>
+
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        licensePlateNumber
+                      </p>
+                    </th>
+
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        vehicleCategory
+                      </p>
+                    </th>
+
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        fuelType
+                      </p>
+                    </th>
+
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        status
+                      </p>
+                    </th>
+
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        remarks
+                      </p>
+                    </th>
+
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        member name
+                      </p>
+                    </th>
+
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      ></p>
+                    </th>
+
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      ></p>
+                    </th>
+
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      ></p>
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody id="vahicleTbody">
+                  <tr>
+                    <td class="p-4 border-b border-blue-gray-50">
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                      >
+                        John Michael
+                      </p>
+                    </td>
+                    <td class="p-4 border-b border-blue-gray-50">
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                      >
+                        Manager
+                      </p>
+                    </td>
+                    <td class="p-4 border-b border-blue-gray-50">
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                      >
+                        23/04/18
+                      </p>
+                    </td>
+                    <td class="p-4 border-b border-blue-gray-50">
+                      <a
+                        href="#"
+                        class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900"
+                      >
+                        Edit
+                      </a>
+                    </td>
+
+                    <td class="p-4 border-b border-blue-gray-50">
+                      <a
+                        href="#"
+                        class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900"
+                      >
+                        Edit
+                      </a>
+                    </td>
+
+                    <td class="p-4 border-b border-blue-gray-50">
+                      <a
+                        href="#"
+                        class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900"
+                      >
+                        Edit
+                      </a>
+                    </td>
+
+                    <td class="p-4 border-b border-blue-gray-50">
+                      <a
+                        href="#"
+                        class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900"
+                      >
+                        Edit
+                      </a>
+                    </td>
+                    <td class="p-4 border-b border-blue-gray-50">
+                      <button
+                        data-id="V001"
+                        onclick="removeInVehicle(event)"
+                        class="hover:bg-gray-300 p-2 rounded-full"
+                      >
+                        <img
+                          data-id="V001"
+                          src="./acessst/image/icon/icons8-remove-30 (2).png"
+                          alt=""
+                        />
+                      </button>
+                    </td>
+                    <td class="p-4 border-b border-blue-gray-50">
+                      <button
+                        data-id="V001"
+                        onclick="editInVehicle(event)"
+                        class="hover:bg-gray-300 p-2 rounded-full"
+                      >
+                        <img
+                          data-id="V001"
+                          src="./acessst/image/icon/icons8-pencil-24.png"
+                          alt=""
+                        />
+                      </button>
+                    </td>
+                    <td class="p-4 border-b border-blue-gray-50">
+                      <button
+                        data-id="V001"
+                        onclick="showDetailsInVehicle(event)"
+                        class="hover:bg-gray-300 p-2 rounded-full"
+                      >
+                        <img
+                          data-id="V001"
+                          src="./acessst/image/icon/icons8-details-30.png"
+                          alt=""
+                        />
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- from section -->
+            <form
+              id="vehicleAddForm"
+              style="display: none"
+              class="fixed top-0 bottom-0 left-0 right-[100px] m-auto z-10 bg-[#fdffff] rounded-lg shadow-lg flex flex-col gap-4 w-[50%] h-fit p-3 overflow-auto"
+            >
+              <!-- name tag and close button -->
+              <div class="flex flex-row items-center justify-between">
+                <!-- name tag -->
+                <label class="font-semibold text-lg text-green-600">
+                  vehicle
+                </label>
+                <!-- close button -->
+                <button
+                  type="button"
+                  class="w-5"
+                  onclick="showVehicleAddFromOnClick()"
+                >
+                  <img src="./acessst/image/icon/icons8-close.svg" alt="" />
+                </button>
+              </div>
+
+              <!-- vehicle code and name -->
+              <div class="flex flex-row gap-3">
+                <!-- vehicle code  -->
+                <div class="sm:col-span-3 flex-grow-[1]">
+                  <label
+                    for="vehicle-code"
+                    class="block text-sm/6 font-medium text-gray-900"
+                    >vehicle Code</label
+                  >
+                  <div class="mt-2">
+                    <input
+                      type="text"
+                      name="vehicleCode"
+                      id="vehicleCode"
+                      autocomplete="given-name"
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                    />
+                  </div>
+                </div>
+                <!-- vehicle number -->
+                <div class="sm:col-span-3 flex-grow-[1]">
+                  <label
+                    for="licensePlateNumber"
+                    class="block text-sm/6 font-medium text-gray-900"
+                    >license Plate Number</label
+                  >
+                  <div class="mt-2">
+                    <input
+                      type="text"
+                      name="licensePlateNumber"
+                      id="licensePlateNumber"
+                      autocomplete="given-name"
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- vehicle category -->
+              <div class="col-span-full">
+                <label
+                  for="vehicleCategory"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >vehicle category
+                </label>
+                <div class="mt-2">
+                  <input type="text" name="vehicleCategory" id="vehicleCategory"
+                  rows="3" class="block rounded-md border-0 py-1.5 text-gray-900
+                  shadow-sm ring-1 ring-inset ring-gray-300 w-[50%]
+                  placeholder:text-gray-400 focus:ring-2 focus:ring-inset
+                  focus:ring-indigo-600 sm:text-sm/6" / >
+                </div>
+              </div>
+
+              <!-- Fuel Type -->
+              <div class="sm:col-span-3 flex-grow-[1]">
+                <label
+                  for="fuelType"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >Fuel Type</label
+                >
+                <div class="mt-2 w-[50%]">
+                  <select name="fuelType" id="fuelType">
+                    <option value="PETROL">PETROL</option>
+                    <option value="DESAL">DESAL</option>
+                    <option value="ELECTRICAL">ELECTRICAL</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- status -->
+              <div class="sm:col-span-3 flex-grow-[1]">
+                <label
+                  for="status"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >Status</label
+                >
+                <div class="mt-2 w-[50%]">
+                  <select name="status" id="status">
+                    <option value="AVAILABLE">AVAILABLE</option>
+                    <option value="UNAVAILABLE">UNAVAILABLE</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- remarks -->
+              <div class="sm:col-span-3 flex-grow-[1]">
+                <label
+                  for="remarks"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >Remarks</label
+                >
+                <div class="mt-2">
+                  <input
+                    type="text"
+                    name="remarks"
+                    id="remarks"
+                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                  />
+                </div>
+              </div>
+
+              <!-- Staff -->
+              <div class="sm:col-span-3 flex-grow-[1]">
+                <label
+                  for="staff"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >Staff</label
+                >
+                <div class="mt-2 w-[50%]">
+                  <select name="staff" id="staff-vehicle">
+                    <option value="AVAILABLE">AVAILABLE</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- close and save button -->
+              <div class="flex justify-end gap-4 mt-6 mb-6">
+                <!-- close button -->
+                <button
+                  type="button"
+                  onclick="showVehicleAddFromOnClick()"
+                  class="bg-gray-300 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded inline-flex items-center gap-4 w-fit"
+                >
+                  <span>Close</span>
+                </button>
+                <!-- save button -->
+                <button
+                  type="button"
+                  onclick="vehicleSave()"
+                  class="bg-green-500 hover:bg-green-500 text-white font-bold py-2 px-4 rounded inline-flex items-center gap-4 w-fit"
+                >
+                  <span id="vehicle-button-done-text">Done</span>
+                  <img
+                    src="./acessst/image/icon/icons8-done-64.png"
+                    class="fill-current w-5 h-4 mr-2"
+                    alt=""
+                  />
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <!-- Staff Section -->
+          <section
+            id="mainStaffSection"
+            style="display: none"
+            class="p-6 flex gap-4 flex-col"
+          >
+            <!-- search bar and close button section  -->
+            <div class="flex flex-row justify-between items-center mb-5">
+              <!-- search bar -->
+              <div class="w-full max-w-sm min-w-[200px]">
+                <div class="relative flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="absolute w-5 h-5 top-2.5 left-2.5 text-slate-600"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+
+                  <input
+                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                    placeholder="Search Field..."
+                  />
+
+                  <button
+                    class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+                    type="button"
+                  >
+                    Search
+                  </button>
+                </div>
+              </div>
+              <!-- close button -->
+              <button
+                type="button"
+                onclick="showStaffAddFromOnClick()"
+                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+              >
+                <img
+                  src="./acessst/image/icon/icons8-add-30.png"
+                  class="fill-current w-4 h-4 mr-2"
+                  alt=""
+                />
+                <span>Staff</span>
+              </button>
+            </div>
+            <!-- table -->
+            <div
+              class="relative flex flex-col h-full overflow-auto text-gray-700 bg-white shadow-md rounded-xl bg-clip-border p-3 overflow-auto"
+              style="width: 1480px"
+            >
+              <table class="w-full text-left table-auto min-w-max">
+                <thead>
+                  <tr>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        id
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Name
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Address
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Designation
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Date of Birth
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Joined Date
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Gender
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Contact No
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Role
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      ></p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      ></p>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="staffTbody"></tbody>
+              </table>
+            </div>
+
+            <!-- from section -->
+            <form
+              id="staffAddForm"
+              style="display: none"
+              class="fixed top-0 bottom-0 left-0 right-[100px] m-auto z-10 bg-[#fdffff] rounded-lg shadow-lg flex flex-col gap-4 w-[50%] h-[80%] p-3 overflow-auto"
+            >
+              <!-- name tag and close button -->
+              <div class="flex flex-row items-center justify-between">
+                <!-- name tag -->
+                <label class="font-semibold text-lg text-green-600"
+                  >Staff
+                </label>
+                <!-- close button -->
+                <button
+                  type="button"
+                  class="w-5"
+                  onclick="showStaffAddFromOnClick()"
+                >
+                  <img src="./acessst/image/icon/icons8-close.svg" alt="" />
+                </button>
+              </div>
+
+              <div class="sm:col-span-3 flex-grow-[1]">
+                <label
+                  for="id"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >Id</label
+                >
+                <div class="mt-2">
+                  <input
+                    required
+                    type="text"
+                    name="id"
+                    id="staff-id"
+                    class="block w-40 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                  />
+                </div>
+              </div>
+
+              <!-- Staff firstName and lastName -->
+              <div class="flex flex-row gap-3">
+                <!-- staff firstName  -->
+                <div class="sm:col-span-3 flex-grow-[1]">
+                  <label
+                    for="firstName"
+                    class="block text-sm/6 font-medium text-gray-900"
+                    >First Name</label
+                  >
+                  <div class="mt-2">
+                    <input
+                      required
+                      type="text"
+                      name="firstName"
+                      id="staff-firstName"
+                      autocomplete="given-name"
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                    />
+                  </div>
+                </div>
+
+                <!-- staff lastName -->
+                <div class="sm:col-span-3 flex-grow-[1]">
+                  <label
+                    for="lastName"
+                    class="block text-sm/6 font-medium text-gray-900"
+                    >Last Name</label
+                  >
+                  <div class="mt-2">
+                    <input
+                      required
+                      type="text"
+                      name="lastName"
+                      id="staff-lastName"
+                      autocomplete="given-name"
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Designation -->
+              <div class="col-span-full">
+                <label
+                  for="designation"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >designation</label
+                >
+                <div class="mt-2">
+                  <input
+                    required
+                    type="text"
+                    name="designation"
+                    id="staff-designation"
+                    class="block w-[50%] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                  />
+                </div>
+              </div>
+
+              <!-- Gender -->
+              <div class="sm:col-span-3 flex-grow-[1]">
+                <label
+                  for="gender"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >Gender</label
+                >
+                <div class="mt-2 w-[50%]">
+                  <select name="gender" id="staff-gender" required>
+                    <option value="MALE">MALE</option>
+                    <option value="FEMALE">FEMALE</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Joined Date -->
+              <div class="sm:col-span-3 flex-grow-[1]">
+                <label
+                  for="joined-date"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >Joined Date</label
+                >
+                <div class="mt-2 w-[50%]">
+                  <input
+                    required
+                    type="date"
+                    name="joinedDate"
+                    id="staff-joined-date"
+                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                  />
+                </div>
+              </div>
+
+              <!-- DOB -->
+              <div class="sm:col-span-3 flex-grow-[1]">
+                <label
+                  for="dob"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >DOB
+                </label>
+                <div class="mt-2 w-[50%]">
+                  <input
+                    required
+                    type="date"
+                    name="dob"
+                    id="staff-dob"
+                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                  />
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-3 w-full">
+                <div class="flex flex-row gap-3">
+                  <!-- Address Line 01 -->
+                  <div class="col-span-full grow-[1]">
+                    <label
+                      for="addressLine01"
+                      class="block text-sm/6 font-medium text-gray-900"
+                      >Address Line 1</label
+                    >
+                    <div class="mt-2">
+                      <input
+                        required
+                        type="text"
+                        name="addressLine01"
+                        id="staff-address-line-01"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Address Line 02 -->
+                  <div class="col-span-full grow-[1]">
+                    <label
+                      for="staff-address-line-02"
+                      class="block text-sm/6 font-medium text-gray-900"
+                      >Address Line 2</label
+                    >
+                    <div class="mt-2">
+                      <input
+                        required
+                        type="text"
+                        name="addressLine02"
+                        id="addressLine02"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex flex-row gap-3">
+                  <!-- Address Line 03 -->
+                  <div class="col-span-full grow-[1]">
+                    <label
+                      for="addressLine03"
+                      class="block text-sm/6 font-medium text-gray-900"
+                      >Address Line 3</label
+                    >
+                    <div class="mt-2">
+                      <input
+                        required
+                        type="text"
+                        name="addressLine03"
+                        id="staff-address-line-03"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Address Line 04 -->
+                  <div class="col-span-full grow-[1]">
+                    <label
+                      for="addressLine04"
+                      class="block text-sm/6 font-medium text-gray-900"
+                      >Address Line 4</label
+                    >
+                    <div class="mt-2">
+                      <input
+                        required
+                        type="text"
+                        name="addressLine04"
+                        id="staff-address-line-04"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Address Line 05 -->
+                <div class="col-span-full">
+                  <label
+                    for="addressLine05"
+                    class="block text-sm/6 font-medium text-gray-900"
+                    >Address Line 5</label
+                  >
+                  <div class="mt-2">
+                    <input
+                      required
+                      type="text"
+                      name="addressLine05"
+                      id="staff-address-line-05"
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- contact no -->
+              <div class="sm:col-span-3 flex-grow-[1]">
+                <label
+                  for="contactNo"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >Contact No</label
+                >
+                <div class="mt-2 w-[50%]">
+                  <input
+                    required
+                    type="text"
+                    name="contactNo"
+                    id="staff-contact-no"
+                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                  />
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="sm:col-span-3 flex-grow-[1]">
+                <label
+                  for="email"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >Email</label
+                >
+                <div class="mt-2 w-[50%]">
+                  <input
+                    required
+                    type="email"
+                    name="email"
+                    id="staff-email"
+                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                  />
+                </div>
+              </div>
+
+              <!-- Role -->
+              <div class="sm:col-span-3 flex-grow-[1]">
+                <label
+                  for="role"
+                  class="block text-sm/6 font-medium text-gray-900"
+                  >Role</label
+                >
+                <div class="mt-2 w-[50%]">
+                  <select name="role" id="staff-role" required>
+                    <option value="USER">USER</option>
+                    <option value="MANAGER">MANAGER</option>
+                    <option value="ADMINISTRATIVE">ADMINISTRATIVE</option>
+                    <option value="SCIENTIST">SCIENTIST</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- close and save button -->
+              <div class="flex justify-end gap-4">
+                <!-- close button -->
+                <button
+                  type="button"
+                  onclick="fieldClose()"
+                  class="bg-gray-300 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded inline-flex items-center gap-4 w-fit"
+                >
+                  <span>Close</span>
+                </button>
+                <!-- save button -->
+                <button
+                  type="button"
+                  onclick="staffSave()"
+                  class="bg-green-500 hover:bg-green-500 text-white font-bold py-2 px-4 rounded inline-flex items-center gap-4 w-fit"
+                >
+                  <span id="staff-button-done-text">Done</span>
+                  <img
+                    src="./acessst/image/icon/icons8-done-64.png"
+                    class="fill-current w-5 h-4 mr-2"
+                    alt=""
+                  />
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <!-- equipment Section -->
+          <section
+            id="mainEquipmentSection"
+            style="display: none"
+            class="p-6 flex gap-4 flex-col"
+          >
+            <!-- search bar and close button section  -->
+            <div class="flex flex-row justify-between items-center">
+              <!-- search bar -->
+              <div class="w-full max-w-sm min-w-[200px]">
+                <div class="relative flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="absolute w-5 h-5 top-2.5 left-2.5 text-slate-600"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+
+                  <input
+                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                    placeholder="Search Field..."
+                  />
+
+                  <button
+                    class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+                    type="button"
+                  >
+                    Search
+                  </button>
+                </div>
+              </div>
+              <!-- add button -->
+              <button
+                type="button"
+                onclick="showEquipmentAddFromOnClick()"
+                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+              >
+                <img
+                  src="./acessst/image/icon/icons8-add-30.png"
+                  class="fill-current w-4 h-4 mr-2"
+                  alt=""
+                />
+                <span>equipment</span>
+              </button>
+            </div>
+
+            <!-- table -->
+            <div
+              class="relative flex flex-col w-full h-full overflow-auto text-gray-700 bg-white shadow-md rounded-xl bg-clip-border p-3 mt-6"
+            >
+              <table class="w-full text-left table-auto min-w-max">
+                <thead>
+                  <tr>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        @
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Name
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Type
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Status
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Staff
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Field
+                      </p>
+                    </th>
+
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      ></p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      ></p>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="equipmentTbody"></tbody>
+              </table>
+            </div>
+
+            <!-- from section -->
+            <form
+              id="equipmentAddForm"
+              style="display: none"
+              class="fixed top-0 bottom-0 left-0 right-[100px] m-auto z-10 bg-[#fdffff] rounded-lg shadow-lg flex flex-col gap-4 w-[50%] h-fit p-3 overflow-auto"
+            >
+              <!-- name tag and close button -->
+              <div class="flex flex-row items-center justify-between">
+                <!-- name tag -->
+                <label class="font-semibold text-lg text-green-600">
+                  equipment
+                </label>
+                <!-- close button -->
+                <button
+                  type="button"
+                  class="w-5"
+                  onclick="showEquipmentAddFromOnClick()"
+                >
+                  <img src="./acessst/image/icon/icons8-close.svg" alt="" />
+                </button>
+              </div>
+
+              <!-- equipment id and name -->
+              <div class="flex flex-row gap-3">
+                <!-- equipment id  -->
+                <div class="sm:col-span-3 flex-grow-[1]">
+                  <label
+                    for="equipment-id"
+                    class="block text-sm/6 font-medium text-gray-900"
+                    >vehicle Code</label
+                  >
+                  <div class="mt-2">
+                    <input
+                      type="text"
+                      name="equipment-id"
+                      id="equipment-id"
+                      autocomplete="given-name"
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                    />
+                  </div>
+                </div>
+
+                <!-- equipment name -->
+                <div class="sm:col-span-3 flex-grow-[1]">
+                  <label
+                    for="equipment-name"
+                    class="block text-sm/6 font-medium text-gray-900"
+                    >equipment name</label
+                  >
+                  <div class="mt-2">
+                    <input
+                      type="text"
+                      name="equipment-name"
+                      id="equipment-name"
+                      autocomplete="given-name"
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex flex-row gap-3">
+                <!-- Type -->
+                <div class="sm:col-span-3 flex-grow-[1]">
+                  <label
+                    for="type"
+                    class="block text-sm/6 font-medium text-gray-900"
+                    >Equipment Type</label
+                  >
+                  <div class="mt-2 w-[50%]">
+                    <select name="type" id="equipment-type">
+                      <option value="ELECTRICAL">ELECTRICAL</option>
+                      <option value="MECHANICAL">MECHANICAL</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- status -->
+                <div class="sm:col-span-3 flex-grow-[1]">
+                  <label
+                    for="status"
+                    class="block text-sm/6 font-medium text-gray-900"
+                    >Available Status</label
+                  >
+                  <div class="mt-2 w-[50%]">
+                    <select name="status" id="equipment-status">
+                      <option value="AVAILABLE">AVAILABLE</option>
+                      <option value="OUT_OF_SERVICE">OUT_OF_SERVICE</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex flex-row gap-3">
+                <!-- Staff Member -->
+                <div class="sm:col-span-3 flex-grow-[1]">
+                  <label
+                    for="staff-member"
+                    class="block text-sm/6 font-medium text-gray-900"
+                    >Staff Member</label
+                  >
+                  <div class="mt-2 w-full">
+                    <select
+                      name="equipment-staff-id"
+                      id="equipment-staff-id"
+                    ></select>
+                  </div>
+                </div>
+
+                <!-- Field -->
+                <div class="sm:col-span-3 flex-grow-[1]">
+                  <label
+                    for="field"
+                    class="block text-sm/6 font-medium text-gray-900"
+                    >Field</label
+                  >
+                  <div class="mt-2 w-full">
+                    <select
+                      name="equipment-fieldCode"
+                      id="equipment-fieldCode"
+                    ></select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- close and save button -->
+              <div class="flex justify-end gap-4 mt-6 mb-6">
+                <!-- close button -->
+                <button
+                  type="button"
+                  onclick="equipmentClose()"
+                  class="bg-gray-300 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded inline-flex items-center gap-4 w-fit"
+                >
+                  <span>Close</span>
+                </button>
+                <!-- save button -->
+                <button
+                  type="button"
+                  onclick="equipmentSave()"
+                  class="bg-green-500 hover:bg-green-500 text-white font-bold py-2 px-4 rounded inline-flex items-center gap-4 w-fit"
+                >
+                  <span id="equipment-button-done-text">Done</span>
+                  <img
+                    src="./acessst/image/icon/icons8-done-64.png"
+                    class="fill-current w-5 h-4 mr-2"
+                    alt=""
+                  />
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <!-- monitoring log Section -->
+          <section
+            id="mainMonitoringLogSection"
+            style="display: none"
+            class="p-6 flex gap-4 flex-col"
+          >
+            <!-- search bar and close button section  -->
+            <div class="flex flex-row justify-between items-center">
+              <!-- search bar -->
+              <div class="w-full max-w-sm min-w-[200px]">
+                <div class="relative flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="absolute w-5 h-5 top-2.5 left-2.5 text-slate-600"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+
+                  <input
+                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                    placeholder="Search Field..."
+                  />
+
+                  <button
+                    class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+                    type="button"
+                  >
+                    Search
+                  </button>
+                </div>
+              </div>
+              <!-- add button -->
+              <button
+                type="button"
+                onclick="showMonitoringLogAddFromOnClick()"
+                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+              >
+                <img
+                  src="./acessst/image/icon/icons8-add-30.png"
+                  class="fill-current w-4 h-4 mr-2"
+                  alt=""
+                />
+                <span>MonitoringLog</span>
+              </button>
+            </div>
+
+            <!-- table -->
+            <div
+              class="relative flex flex-col w-full h-full overflow-auto text-gray-700 bg-white shadow-md rounded-xl bg-clip-border p-3 mt-6"
+            >
+              <table class="w-full text-left table-auto min-w-max">
+                <thead>
+                  <tr>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        @
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Date
+                      </p>
+                    </th>
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Details
+                      </p>
+                    </th>
+
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Field
+                      </p>
+                    </th>
+
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Staff
+                      </p>
+                    </th>
+
+                    <th
+                      class="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+                    >
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
+                      >
+                        Crop
+                      </p>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="monitoringLogTbody">
+                  <tr>
+                    <td class="p-4 border-b border-blue-gray-50">
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                      >
+                        image
+                      </p>
+                    </td>
+                    <td class="p-4 border-b border-blue-gray-50">
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                      >
+                        Date
+                      </p>
+                    </td>
+                    <td class="p-4 border-b border-blue-gray-50">
+                      <p
+                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900"
+                      >
+                        Details
+                      </p>
+                    </td>
+                    <td class="p-4 border-b border-blue-gray-50">
+                      <table
+                        class="w-full border-collapse border border-blue-gray-50"
+                      >
+                        <tbody>
+                          <!-- Row 1 -->
+                          <tr>
+                            <td class="p-2 border border-blue-gray-100">
+                              Row 1, Col 1
+                            </td>
+                          </tr>
+                          <!-- Row 2 -->
+                          <tr>
+                            <td class="p-2 border border-blue-gray-100">
+                              Row 2, Col 1
+                            </td>
+                          </tr>
+                          <!-- Row 3 -->
+                          <tr>
+                            <td class="p-2 border border-blue-gray-100">
+                              Row 3, Col 1
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+
+                    <td class="p-4 border-b border-blue-gray-50">
+                      <table
+                        class="w-full border-collapse border border-blue-gray-50"
+                      >
+                        <tbody>
+                          <!-- Row 1 -->
+                          <tr>
+                            <td class="p-2 border border-blue-gray-100">
+                              Row 1, Col 1
+                            </td>
+                          </tr>
+                          <!-- Row 2 -->
+                          <tr>
+                            <td class="p-2 border border-blue-gray-100">
+                              Row 2, Col 1
+                            </td>
+                          </tr>
+                          <!-- Row 3 -->
+                          <tr>
+                            <td class="p-2 border border-blue-gray-100">
+                              Row 3, Col 1
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                    <td class="p-4 border-b border-blue-gray-50">
+                      <table
+                        class="w-full border-collapse border border-blue-gray-50"
+                      >
+                        <tbody>
+                          <!-- Row 1 -->
+                          <tr>
+                            <td class="p-2 border border-blue-gray-100">
+                              Row 1, Col 1
+                            </td>
+                          </tr>
+                          <!-- Row 2 -->
+                          <tr>
+                            <td class="p-2 border border-blue-gray-100">
+                              Row 2, Col 1
+                            </td>
+                          </tr>
+                          <!-- Row 3 -->
+                          <tr>
+                            <td class="p-2 border border-blue-gray-100">
+                              Row 3, Col 1
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- from section -->
+            <form
+              id="cropLogForm"
+              onsubmit="submitCropLogForm(event)"
+              enctype="multipart/form-data"
+              style="height: 80%; overflow: auto"
+            >
+              <!-- Monitoring Log -->
+              <div
+                id="monitoringLogAddForm"
+                style="display: none"
+                class="fixed h-[68%] overflow-auto top-0 bottom-0 left-0 right-[100px] m-auto z-10 bg-[#fdffff] rounded-lg shadow-lg flex flex-col gap-4 w-[50%] h-fit p-3 overflow-auto"
+              >
+                <!-- name tag and close button -->
+                <div class="flex flex-row items-center justify-between">
+                  <!-- name tag -->
+                  <label class="font-semibold text-lg text-green-600">
+                    monitoring Log
+                  </label>
+                  <!-- close button -->
+                  <button
+                    type="button"
+                    class="w-5"
+                    onclick="showMonitoringLogAddFromOnClick()"
+                  >
+                    <img src="./acessst/image/icon/icons8-close.svg" alt="" />
+                  </button>
+                </div>
+
+                <!--  Log code and name -->
+                <div class="flex flex-row gap-3">
+                  <!-- log code  -->
+                  <div class="sm:col-span-3 flex-grow-[1]">
+                    <label
+                      for="logCode"
+                      class="block text-sm/6 font-medium text-gray-900"
+                      >log Code</label
+                    >
+                    <div class="mt-2">
+                      <input
+                        type="text"
+                        name="logCode"
+                        id="logCode"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                      />
+                    </div>
+                  </div>
+                  <!-- log date -->
+                  <div class="sm:col-span-3 flex-grow-[1]">
+                    <label
+                      for="logDate"
+                      class="block text-sm/6 font-medium text-gray-900"
+                      >log date</label
+                    >
+                    <div class="mt-2">
+                      <input
+                        type="date"
+                        name="logDate"
+                        id="logDate"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- log details / observations -->
+                <div class="col-span-full">
+                  <label
+                    for="logDetails"
+                    class="block text-sm/6 font-medium text-gray-900"
+                    >log details
+                  </label>
+                  <div class="mt-2">
+                    <input id="logDetails" name="logDetails" rows="3"
+                    class="block rounded-md border-0 py-1.5 text-gray-900
+                    shadow-sm ring-1 ring-inset ring-gray-300 w-[50%]
+                    placeholder:text-gray-400 focus:ring-2 focus:ring-inset
+                    focus:ring-indigo-600 sm:text-sm/6" / >
+                  </div>
+                </div>
+
+                <!-- image section -->
+                <div class="flex flex-row gap-6">
+                  <div class="col-span-full">
+                    <label
+                      for="observedImage"
+                      class="block text-sm/6 font-medium text-gray-900"
+                      >Observed Image</label
+                    >
+                    <div
+                      class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
+                    >
+                      <div class="text-center">
+                        <img
+                          id="crop-log-previewImage"
+                          class="mx-auto"
+                          style="height: 200px"
+                          src="/src/acessst/image/icon/9812024.png"
+                          alt="Preview"
+                        />
+                        <div class="mt-4 flex text-sm/6 text-gray-600">
+                          <label
+                            for="observedImage"
+                            class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                          >
+                            <span>Upload a file</span>
+                            <input
+                              id="observedImage"
+                              name="observedImage"
+                              type="file"
+                              class="sr-only"
+                              accept="image/png, image/jpeg, image/gif"
+                              onchange="cropLogUpdateImagePreview(event)"
+                            />
+                          </label>
+                          <p class="pl-1">or drag and drop</p>
+                        </div>
+                        <p class="text-xs/5 text-gray-600">
+                          PNG, JPG, GIF up to 10MB
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- fields -->
+                <div class="relative font-[sans-serif] w-fit">
+                  <button
+                    type="button"
+                    id="dropdownToggleField"
+                    class="px-5 py-2.5 rounded text-white text-sm font-semibold border-none outline-none bg-[#4CAF50] hover:bg-[#22C55E] active:bg-[#22C55E]"
+                  >
+                    Select Crops Maintainer Fields
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-3 fill-white inline ml-3"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M11.99997 18.1669a2.38 2.38 0 0 1-1.68266-.69733l-9.52-9.52a2.38 2.38 0 1 1 3.36532-3.36532l7.83734 7.83734 7.83734-7.83734a2.38 2.38 0 1 1 3.36532 3.36532l-9.52 9.52a2.38 2.38 0 0 1-1.68266.69734z"
+                        clip-rule="evenodd"
+                        data-original="#000000"
+                      />
+                    </svg>
+                  </button>
+
+                  <ul
+                    id="dropdownMenuField"
+                    class="relative hidden shadow-lg bg-white py-2 px-2 z-[1000] min-w-full w-max rounded max-h-96 overflow-auto"
+                  >
+                    <div class="flex items-center mb-4">
+                      <input
+                        id="default-checkbox"
+                        type="checkbox"
+                        value=""
+                        class="w-4 h-4 text-[#22C55E] bg-[#22C55E] border-[#22C55E] rounded focus:ring-[#22C55E]"
+                      />
+                      <label
+                        for="default-checkbox"
+                        class="ms-2 text-sm font-medium text-gray-900"
+                        >Default checkbox</label
+                      >
+                    </div>
+                    <div class="flex items-center">
+                      <input
+                        checked
+                        id="checked-checkbox"
+                        type="checkbox"
+                        value=""
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="checked-checkbox"
+                        class="ms-2 text-sm font-medium text-gray-900"
+                        >Checked state</label
+                      >
+                    </div>
+                  </ul>
+                </div>
+
+                <!-- Crop -->
+                <div class="relative font-[sans-serif] w-fit">
+                  <button
+                    type="button"
+                    id="dropdownToggleCrop"
+                    class="px-5 py-2.5 rounded text-white text-sm font-semibold border-none outline-none bg-[#4CAF50] hover:bg-[#22C55E] active:bg-[#22C55E]"
+                  >
+                    Select Maintainered Crops
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-3 fill-white inline ml-3"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M11.99997 18.1669a2.38 2.38 0 0 1-1.68266-.69733l-9.52-9.52a2.38 2.38 0 1 1 3.36532-3.36532l7.83734 7.83734 7.83734-7.83734a2.38 2.38 0 1 1 3.36532 3.36532l-9.52 9.52a2.38 2.38 0 0 1-1.68266.69734z"
+                        clip-rule="evenodd"
+                        data-original="#000000"
+                      />
+                    </svg>
+                  </button>
+
+                  <ul
+                    id="dropdownMenuCrop"
+                    class="relative hidden shadow-lg bg-white py-2 px-2 z-[1000] min-w-full w-max rounded max-h-96 overflow-auto"
+                  >
+                    <div class="flex items-center mb-4">
+                      <input
+                        id="default-checkbox"
+                        type="checkbox"
+                        value=""
+                        class="w-4 h-4 text-[#22C55E] bg-[#22C55E] border-[#22C55E] rounded focus:ring-[#22C55E]"
+                      />
+                      <label
+                        for="default-checkbox"
+                        class="ms-2 text-sm font-medium text-gray-900"
+                        >Default checkbox</label
+                      >
+                    </div>
+                    <div class="flex items-center">
+                      <input
+                        checked
+                        id="checked-checkbox"
+                        type="checkbox"
+                        value=""
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="checked-checkbox"
+                        class="ms-2 text-sm font-medium text-gray-900"
+                        >Checked state</label
+                      >
+                    </div>
+                  </ul>
+                </div>
+
+                <!-- Staff -->
+                <div class="relative font-[sans-serif] w-fit">
+                  <button
+                    type="button"
+                    id="dropdownToggleStaff"
+                    class="px-5 py-2.5 rounded text-white text-sm font-semibold border-none outline-none bg-[#4CAF50] hover:bg-[#22C55E] active:bg-[#22C55E]"
+                  >
+                    Select Maintainered Staff Members
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-3 fill-white inline ml-3"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M11.99997 18.1669a2.38 2.38 0 0 1-1.68266-.69733l-9.52-9.52a2.38 2.38 0 1 1 3.36532-3.36532l7.83734 7.83734 7.83734-7.83734a2.38 2.38 0 1 1 3.36532 3.36532l-9.52 9.52a2.38 2.38 0 0 1-1.68266.69734z"
+                        clip-rule="evenodd"
+                        data-original="#000000"
+                      />
+                    </svg>
+                  </button>
+
+                  <ul
+                    id="dropdownMenuStaff"
+                    class="relative hidden shadow-lg bg-white py-2 px-2 z-[1000] min-w-full w-max rounded max-h-96 overflow-auto"
+                  >
+                    <div class="flex items-center mb-4">
+                      <input
+                        id="default-checkbox"
+                        type="checkbox"
+                        value=""
+                        class="w-4 h-4 text-[#22C55E] bg-[#22C55E] border-[#22C55E] rounded focus:ring-[#22C55E]"
+                      />
+                      <label
+                        for="default-checkbox"
+                        class="ms-2 text-sm font-medium text-gray-900"
+                        >Default checkbox</label
+                      >
+                    </div>
+                    <div class="flex items-center">
+                      <input
+                        checked
+                        id="checked-checkbox"
+                        type="checkbox"
+                        value=""
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="checked-checkbox"
+                        class="ms-2 text-sm font-medium text-gray-900"
+                        >Checked state</label
+                      >
+                    </div>
+                  </ul>
+                </div>
+
+                <!-- close and save button -->
+                <div class="flex justify-end gap-4 mt-6 mb-6">
+                  <!-- close button -->
+                  <button
+                    type="button"
+                    onclick="MonitoringlogClose()"
+                    class="bg-gray-300 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded inline-flex items-center gap-4 w-fit"
+                  >
+                    <span>Close</span>
+                  </button>
+                  <!-- save button -->
+                  <button
+                    type="submit"
+                    onclick="MonitoringlogSave()"
+                    class="bg-green-500 hover:bg-green-500 text-white font-bold py-2 px-4 rounded inline-flex items-center gap-4 w-fit"
+                  >
+                    <span id="Monitoringlog-button-done-text">Done</span>
+                    <img
+                      src="./acessst/image/icon/icons8-done-64.png"
+                      class="fill-current w-5 h-4 mr-2"
+                      alt=""
+                    />
+                  </button>
+                </div>
+              </div>
+            </form>
+          </section>
+
+        </div>
+      </section>
+    </section>
+
+    <script type="text/javascript" src="./acessst/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="./controller/dashbord.js"></script>
+    <script
+      type="text/javascript"
+      src="./controller/FieldController.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="./controller/CropController.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="./controller/VehicleController.js"
+    ></script>
+
+    <script type="text/javascript" src="./service/Vehicle.js"></script>
+    <script type="text/javascript" src="./service/StaffServce.js"></script>
+    <script type="text/javascript" src="./service/FieldService.js"></script>
+    <script type="text/javascript" src="./service/EquipmentService.js"></script>
+    <script type="text/javascript" src="./service/CropService.js"></script>
+    <script type="text/javascript" src="./service/CropLogService.js"></script>
+    <script
+      type="text/javascript"
+      src="./controller/StaffController.js"
+    ></script>
+
+    <script
+      type="text/javascript"
+      src="./controller/MonitoringlogController.js"
+    ></script>
+
+    <script
+      type="text/javascript"
+      src="./controller/EquipmentController.js"
+    ></script>
+  </body>
+</html>
