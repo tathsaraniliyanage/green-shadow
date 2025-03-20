@@ -1,8 +1,8 @@
-# Green Shadow 🌟
+# Green Shadow - Crop Monitoring System 🌱  
 
 This project is a **Crop Management System** designed to help manage and track crop data. It is a full-stack application with both frontend and backend components. The backend is built using **Spring Boot** and **MySQL**, while the frontend is developed using **HTML**, **TailwindCSS**, **JavaScript**, **Axios**, and **jQuery**.
 
-## Features
+## Features 🌟
 
 - Add, update, and delete crop records.
 - View crop information in a user-friendly interface.
@@ -10,9 +10,9 @@ This project is a **Crop Management System** designed to help manage and track c
 - Database-driven crop management using **MySQL**.
 - Secure and efficient data management with **Hibernate** for JPA.
 
-## Technologies Used
+## Technologies Used 💡🌾
 
-### Frontend
+### Frontend 📎
 
 - **HTML**: Structure of the web pages.
 - **TailwindCSS**: For styling the frontend with a utility-first approach.
@@ -20,15 +20,16 @@ This project is a **Crop Management System** designed to help manage and track c
 - **Axios**: For making HTTP requests to the backend.
 - **jQuery**: For DOM manipulation and event handling.
 
-### Backend
+### Backend 📎
 
 - **Spring Boot**: For building the backend services.
 - **MySQL**: For database management.
 - **Hibernate**: For Object-Relational Mapping (ORM) and managing JPA (Java Persistence API) data sources.
 
-## Project Setup
 
-### Prerequisites
+## Project Setup 🔗
+
+### Prerequisites 📍
 
 Before getting started, ensure that you have the following installed:
 
@@ -36,7 +37,7 @@ Before getting started, ensure that you have the following installed:
 - **MySQL** database server
 - **Maven** (for building the backend)
   
-### Backend Setup
+### Backend Setup 📍
 
 1. Clone the repository:
 
@@ -67,7 +68,8 @@ Before getting started, ensure that you have the following installed:
     ```
     The backend should now be running on http://localhost:8080
 
-### Frontend Setup
+
+### Frontend Setup 📍
 Navigate to the frontend directory:
 
     cd frontend
