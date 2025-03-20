@@ -83,6 +83,9 @@ Before getting started, ensure that you have the following installed:
 
 ## Screenshots 🖼️
 
+![Screenshot from 2025-01-09 19-45-20](https://github.com/user-attachments/assets/519f3347-8a5c-4179-a31e-43c6a82f0bd7)
+![Screenshot from 2025-01-14 09-14-06](https://github.com/user-attachments/assets/eda523bf-7e95-45d1-993b-94fa5f3b1382)
+
 
 
 
