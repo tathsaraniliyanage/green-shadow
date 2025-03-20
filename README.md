@@ -10,7 +10,7 @@ This project is a **Crop Management System** designed to help manage and track c
 - Database-driven crop management using **MySQL**.
 - Secure and efficient data management with **Hibernate** for JPA.
 
-## Technologies Used 💡🌾
+## Technologies Used 💡
 
 ### Frontend 📎
 
@@ -70,10 +70,24 @@ Before getting started, ensure that you have the following installed:
 
 
 ### Frontend Setup 📍
-Navigate to the frontend directory:
 
+1. Navigate to the frontend directory:
+    ```
     cd frontend
+    ```
+    
+2.Run project using vscode live server Ueing 
 
-Run project using vscode live server Ueing 
+   The frontend should now be running on http://localhost:5000.
 
-The frontend should now be running on http://localhost:5000.
+
+## Screenshots 🖼️🌾
+
+
+
+
+
+
+## 📚 License
+
+This project is licensed under the [MIT License](LICENSE).   
