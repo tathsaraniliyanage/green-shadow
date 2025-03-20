@@ -27,7 +27,7 @@ This project is a **Crop Management System** designed to help manage and track c
 - **Hibernate**: For Object-Relational Mapping (ORM) and managing JPA (Java Persistence API) data sources.
 
 
-## Project Setup 🔗
+## Project Setup 🌾
 
 ### Prerequisites 📍
 
@@ -76,12 +76,12 @@ Before getting started, ensure that you have the following installed:
     cd frontend
     ```
     
-2.Run project using vscode live server Ueing 
+2. Run project using vscode live server Ueing 
 
-   The frontend should now be running on http://localhost:5000.
+      The frontend should now be running on http://localhost:5000.
 
 
-## Screenshots 🖼️🌾
+## Screenshots 🖼️
 
 
 
