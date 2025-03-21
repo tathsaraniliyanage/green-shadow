@@ -1,4 +1,7 @@
 # Green Shadow - Crop Monitoring System 🌱  
+<h1 align="center">
+    <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=1100&height=70&duration=4000&lines=Green+Shadow+&color=078179" />
+</h1>
 
 This project is a **Crop Management System** designed to help manage and track crop data. It is a full-stack application with both frontend and backend components. The backend is built using **Spring Boot** and **MySQL**, while the frontend is developed using **HTML**, **TailwindCSS**, **JavaScript**, **Axios**, and **jQuery**.
 
